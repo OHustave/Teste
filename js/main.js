@@ -37,9 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Smooth Scroll ---
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
-      e.preventDefault();
       const targetId = anchor.getAttribute('href');
       if (targetId === '#') return;
+      e.preventDefault();
       const target = document.querySelector(targetId);
       if (target) {
         const navbarHeight = navbar.offsetHeight;
