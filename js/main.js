@@ -126,11 +126,15 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       // Salva no localStorage
-      const interests = JSON.parse(localStorage.getItem('cib_interests') || '[]');
-      data.timestamp = new Date().toISOString();
-      data.id = Date.now();
-      interests.push(data);
-      localStorage.setItem('cib_interests', JSON.stringify(interests));
+      try {
+        const interests = JSON.parse(localStorage.getItem('cib_interests') || '[]');
+        data.timestamp = new Date().toISOString();
+        data.id = Date.now();
+        interests.push(data);
+        localStorage.setItem('cib_interests', JSON.stringify(interests));
+      } catch (err) {
+        console.error('Erro ao salvar no localStorage:', err);
+      }
 
       // Mostra mensagem de sucesso
       formContent.style.display = 'none';
