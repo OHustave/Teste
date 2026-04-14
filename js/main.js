@@ -23,7 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
   hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
     navLinks.classList.toggle('open');
-    document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+    const isOpen = navLinks.classList.contains('open');
+    hamburger.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
   });
 
   navLinksItems.forEach(link => {
